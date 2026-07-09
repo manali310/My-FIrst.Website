@@ -1,0 +1,389 @@
+/* ગ્લોબલ સેટિંગ્સ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: radial-gradient(circle, #102a43, 0%, #0c1b2a 100%)! important;
+    
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+    padding: 40px 20px;
+    margin: 0;
+    color: #ffffff;
+}
+
+
+/* બેકગ્રાઉન્ડ સર્કલ્સ */
+.background-circles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.5;
+}
+
+.c1 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, #fbcfe8, #c7d2fe);
+    top: -10%;
+    right: 10%;
+}
+
+.circle.c2 {
+    width: 350px;
+    height: 350px;
+    background: linear-gradient(135deg, #bfdbfe, #99f6e4);
+    bottom: -10%;
+    left: 10%;
+}
+
+/* કન્ટેનર અને હેડર */
+.projects-container {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.header-area {
+    margin-bottom: 40px;
+}
+
+.back-btn {
+    display: inline-block;
+    color: #cfd5de;
+    text-decoration: none;
+    font-size: 14px;
+    margin-bottom: 15px;
+    transition: color 0.3s;
+    font-weight: 500;
+}
+
+.back-btn:hover {
+    color: #b8b8e6;
+}
+
+.main-title {
+    font-size: 36px;
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #87aee6;
+    font-size: 16px;
+}
+
+/* પ્રોજેક્ટ્સ ગ્રીડ લેઆઉટ */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 10px;
+}
+
+/* કાર્ડ સ્ટાઈલ (પ્રોફેસનલ વ્હાઇટ લુક) */
+.project-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid #e2e8f0;
+    padding: 30px;
+    border-radius: 20px;
+    color: #1e293b;
+    text-align: left;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 20px rgba(148, 163, 184, 0.08);
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    background: #ffffff;
+    border-color: #6366f1;
+    box-shadow: 0 20px 30px rgba(99, 102, 241, 0.1);
+}
+
+/* કાર્ડ આઇકોન */
+.card-icon {
+    font-size: 26px;
+    color: #000000;
+    margin-bottom: 20px;
+    background: #f0fdf4;
+    background: rgba(79, 70, 229, 0.08);
+    width: 55px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 14px;
+    transition: all 0.3s;
+}
+
+.project-card:hover .card-icon {
+    background: #696697;
+    color: #fff;
+}
+
+.project-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.project-card p {
+    color: #475569;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* વ્યુ બટન */
+.view-btn {
+    background: transparent;
+    color: #606068;
+    border: 1px solid #e2e8f0;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #fff;
+}
+
+.project-card:hover .view-btn {
+    background: #374151;
+    color: #fff;
+    border-color: #050512;
+    box-shadow: 0 5px 15px rgba(138, 135, 192, 0.2);
+}
+
+/* --- મોડલ (Pop-up Box) ની લાઇટ સ્ટાઈલ --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.3); /* સોફ્ટ ડાર્ક બેકગ્રાઉન્ડ */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-box {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 35px;
+    border-radius: 24px;
+    width: 90%;
+    max-width: 500px;
+    color: #1e293b;
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-box {
+    transform: scale(1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    color: #2d7dec;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #000000;
+}
+
+#modalTitle {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #090909;
+}
+
+.modal-separator {
+    border: none;
+    height: 1px;
+    background: #e2e8f0;
+    margin-bottom: 15px;
+}
+
+#modalDesc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #475569;
+    margin-bottom: 20px;
+}
+
+.tech-used {
+    font-size: 14px;
+    color: #000000;
+    margin-bottom: 25px;
+}
+
+#modalTech {
+    color: #059669; /* ડાર્ક સોફ્ટ ગ્રીન ફોન્ટ */
+    font-weight: 600;
+}
+
+.live-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 10px 20px rgba(79, 70, 229, 0.15);
+    transition: all 0.3s;
+}
+
+.live-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px rgba(79, 70, 229, 0.3);
+}
+
+/* --- Mobile Responsive CSS --- */
+@media screen and (max-width: 768px) {
+    
+    /* મુખ્ય કન્ટેનરને ફ્લેક્સ-ડાયરેક્શન કોલમ આપો જેથી પ્રોફાઇલ અને પ્રોજેક્ટ્સ ઉપર-નીચે થઈ જાય */
+    body, .main-container, [class*="-container"] {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+    }
+
+    /* પ્રોફાઇલ કાર્ડને પૂરી પહોળાઈ (Full Width) આપવા માટે */
+    .profile-container, .profile-card {
+        width: 100% !important;
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+
+    /* પ્રોજેક્ટ્સ સેક્શનની ગ્રીડને મોબાઇલમાં 1 કોલમ કરવા માટે */
+    .projects-grid {
+        grid-template-columns: 1fr !important; /* બધી કાર્ડ્સ એક લાઈનમાં નીચે આવી જશે */
+        gap: 20px;
+        width: 100%;
+    }
+
+    /* પ્રોજેક્ટ કાર્ડ્સ પણ પૂરી સાઈઝના થઈ જશે */
+    .project-card {
+        width: 100%;
+    }
+
+    /* હેડિંગ અને લખાણની સાઈઝ મોબાઈલ પ્રમાણે સેટ કરવા */
+    h1, h2 {
+        font-size: 24px !important;
+        text-align: center;
+    }
+    
+    p {
+        font-size: 14px !important;
+        text-align: center;
+    }
+}
+* College/Academic Section Styling */
+.academic-box {
+    background: var(--bg);
+    border: 1px solid rgba(164, 153, 217, 0.4);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+}
+
+.academic-box p {
+    font-size: 14px;
+    color: var(--purple);
+    margin-bottom: 15px;
+}
+
+.academic-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.academic-card {
+    background: var(--card);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    border-top: 3px solid var(--purple2); /* તમારો બ્રાઈટ પર્પલ કલર */
+}
+
+.academic-card h5 {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.academic-card h5 i {
+    color: var(--purple2);
+}
+
+.academic-card p {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+/* Responsive Grid for Phones */
+@media (max-width: 600px) {
+    .academic-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+your-card-class {
+    background-color: #1b263b; /* કાર્ડ માટે સહેજ લાઈટ બ્લુ */
+    color: #ff2a2a; /* કાર્ડની અંદરના અક્ષરો વ્હાઇટ કરવા માટે */
+}

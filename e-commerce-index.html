@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Details - E-Commerce Platform</title>
+  <!-- આઈકોન્સ માટે FontAwesome લિંક -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color:#8e9dae; color: #8ea9d4; padding: 40px 20px; }
+    .background-circles {
+      color: #8e9dae;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+      }
+    .container { max-width: 900px; margin: 0 auto; background: white; padding: 40px; border-radius: 16px; box-shadow: 0 4px 25px rgba(0,0,0,0.05); }
+    
+    /* બેક બટન */
+    .back-btn { display: inline-flex; align-items: center; gap: 8px; color: #6366f1; text-decoration: none; font-weight: 600; margin-bottom: 24px; transition: 0.2s; }
+    .back-btn:hover { color: #3f3f54; }
+    
+    /* હેડર સેક્શન */
+    .project-header { display: flex; align-items: center; gap: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 24px; margin-bottom: 30px; }
+    .project-icon { background: #eef2ff; color: #7476be; padding: 16px; border-radius: 12px; font-size: 28px; }
+    .project-title { font-size: 28px; font-weight: 700; color: #0f172a; }
+    
+    /* સેક્શન્સ */
+    h3 { font-size: 20px; color: #334155; margin: 24px 0 12px 0; display: flex; align-items: center; gap: 10px; }
+    p { color: #64748b; line-height: 1.7; font-size: 16px; }
+    
+    /* બેજીસ */
+    .tech-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .badge { background: #65656b; color: white; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 500; }
+    
+    /* ફીચર્સ લિસ્ટ */
+    .features-list { list-style: none; margin-top: 10px; }
+    .features-list li { padding: 10px 0; border-bottom: 1px dashed #e2e8f0; display: flex; align-items: center; gap: 12px; color: #475569; }
+    .features-list i { color: #0ed693; }
+    
+    /* કોડ સેક્શન સ્ટાઈલ */
+    pre { background: #0f172a; color: #f8fafc; padding: 20px; border-radius: 12px; overflow-x: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; margin-top: 10px; border-left: 4px solid #6366f1; }
+    .file-name { background: #334155; color: #f8fafc; display: inline-block; padding: 4px 12px; border-radius: 6px 6px 0 0; font-size: 12px; font-family: monospace; margin-top: 15px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- પાછા જવાનું બટન (તમારું મેઈન પેજ જે પણ હોય તે અહી લખો) -->
+  <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to home page</a>
+  
+  <!-- હેડર -->
+  <div class="project-header">
+    <div class="project-icon"><i class="fas fa-shopping-cart"></i></div>
+    <div>
+      <h1 class="project-title">Full-Stack E-Commerce Platform</h1>
+    </div>
+  </div>
+
+  <!-- ડિસ્ક્રિપ્શન -->
+  <h3><i class="fas fa-file-alt"></i> Project Overview</h3>
+  <p>This is a standard industry-level Full-Stack E-Commerce web application built using the MERN stack. It allows users to browse products, add items to a dynamic shopping cart, and complete secure payments online. It also features a fully functional Administrative Dashboard for managing orders and product inventory in real-time.</p>
+
+  <!-- ટેકનોલોજી બેજીસ -->
+  <h3><i class="fas fa-code"></i> Technologies Used</h3>
+  <div class="tech-badges">
+    <span class="badge">MongoDB</span>
+    <span class="badge">Express.js</span>
+    <span class="badge">React.js</span>
+    <span class="badge">Node.js</span>
+    <span class="badge">JWT Auth</span>
+    <span class="badge">Stripe API</span>
+  </div>
+
+  <!-- મુખ્ય ફીચર્સ -->
+  <h3><i class="fas fa-star"></i> Key Features Implemented</h3>
+  <ul class="features-list">
+    <li><i class="fas fa-check-circle"></i> <strong>User Authentication:</strong> Secure signup/login using JWT and bcrypt hashing.</li>
+    <li><i class="fas fa-check-circle"></i> <strong>Product Filtering:</strong> Dynamic search, category sorting, and price range filters.</li>
+    <li><i class="fas fa-check-circle"></i> <strong>Secure Checkout:</strong> Integrated Stripe/Razorpay payment gateway.</li>
+    <li><i class="fas fa-check-circle"></i> <strong>Admin Dashboard:</strong> Real-time product creation, deletion, and order status updates.</li>
+  </ul>
+
+  <!-- આર્કિટેક્ચર અને કોડ સ્નિપેટ -->
+  <h3><i class="fas fa-folder-open"></i> Core Backend Implementation (Code Snippet)</h3>
+  <p>Here is a preview of the backend architecture structure designed for this platform:</p>
+
+  <!-- મોડેલ કોડ -->
+  <div class="file-name">models/Product.js</div>
+  <pre>const mongoose = require('mongoose');
+
+const productSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  price: { type: Number, required: true },
+  category: { type: String, required: true },
+  stock: { type: Number, default: 0 }
+}, { timestamps: true });
+
+module.exports = mongoose.model('Product', productSchema);</pre>
+
+  <!-- પેમેન્ટ કોડ -->
+  <div class="file-name">routes/payment.js</div>
+  <pre>const express = require('express');
+const router = express.Router();
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+
+router.post('/checkout', async (req, res) => {
+  const session = await stripe.checkout.sessions.create({
+    payment_method_types: ['card'],
+    line_items: req.body.items,
+    mode: 'payment',
+    success_url: 'http://localhost:3000/success',
+  });
+  res.json({ id: session.id });
+});</pre>
+
+ 
+</body>
+</html>
