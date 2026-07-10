@@ -580,17 +580,81 @@ nav ul li a:hover::after{
     transform: translateY(-2px); /* બટન સહેજ ઉપર આવશે */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
-@media(max-width: 768px){
-  body{
-    padding:15px;
-    flex-direction: column;
-    width:100%;
-    overflow-x:hidden;
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
   }
-  .container,.nav-wrap, .buttons-group,.avatar-ring{
+
+  body {
+    padding: 12px;
+    display: block;
+  }
+
+  .container,
+  .nav-wrap,
+  .buttons-group,
+  .avatar-ring,
+  .hero,
+  .section,
+  .portfolio-grid,
+  .cards,
+  .row,
+  .col {
     width: 100% !important;
-    flex-direction:column !important;
-    align-items:center !important;
-    height:auto!important;
+    max-width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-wrap {
+    justify-content: center;
+    text-align: center;
+  }
+
+  img, video, iframe {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .portfolio-btn,
+  button,
+  .btn,
+  a {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  h1 {
+    font-size: 28px;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.6;
+    text-align: center;
+  }
+}
+@media (max-width: 768px) {
+  .main-wrapper,
+  .content-wrapper,
+  .portfolio-section,
+  .about-section,
+  .contact-section {
+    flex-direction: column !important;
+    width: 100% !important;
   }
 }
