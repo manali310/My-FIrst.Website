@@ -216,8 +216,13 @@ body {
 }
 
 @media (max-width: 400px) {
+    body{
+        padding:20px;
+        flex-direction:column;
+    }
     .buttons-group { flex-direction: column; gap: 10px; }
     .btn { justify-content: center; }
+    
 }
 
 your-card-class {
