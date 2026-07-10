@@ -286,104 +286,97 @@ body {
     box-shadow: 0 15px 25px rgba(79, 70, 229, 0.3);
 }
 
-/* --- Mobile Responsive CSS --- */
-@media screen and (max-width: 768px) {
-    
-    /* મુખ્ય કન્ટેનરને ફ્લેક્સ-ડાયરેક્શન કોલમ આપો જેથી પ્રોફાઇલ અને પ્રોજેક્ટ્સ ઉપર-નીચે થઈ જાય */
-    body, .main-container, [class*="-container"] {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 15px;
-    }
 
-    /* પ્રોફાઇલ કાર્ડને પૂરી પહોળાઈ (Full Width) આપવા માટે */
-    .profile-container, .profile-card {
-        width: 100% !important;
-        max-width: 100%;
-        margin-bottom: 30px;
-    }
+/* Mobile Responsive (Updated) */
+@media (max-width: 768px) {
+  html, body {
+    width: 100%;
+    overflow-x: hidden; /* આનાથી આડી સ્ક્રોલબાર નહીં આવે */
+    margin: 0;
+    padding: 0;
+  }
 
-    /* પ્રોજેક્ટ્સ સેક્શનની ગ્રીડને મોબાઇલમાં 1 કોલમ કરવા માટે */
-    .projects-grid {
-        grid-template-columns: 1fr !important; /* બધી કાર્ડ્સ એક લાઈનમાં નીચે આવી જશે */
-        gap: 20px;
-        width: 100%;
-    }
+  body {
+    padding: 15px; /* થોડી સ્પેસ આપવા માટે */
+    box-sizing: border-box;
+  }
 
-    /* પ્રોજેક્ટ કાર્ડ્સ પણ પૂરી સાઈઝના થઈ જશે */
-    .project-card {
-        width: 100%;
-    }
+  /* બધી જ વસ્તુઓને એકસાથે flex-column આપવાની જગ્યાએ, જે લેઆઉટ છે એને જ ટાર્ગેટ કરો */
+  .container,
+  .hero,
+  .section,
+  .main-wrapper,
+  .content-wrapper,
+  .portfolio-section,
+  .about-section,
+  .contact-section,
+  .row {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px; /* થોડી વધુ જગ્યા આપવા */
+    box-sizing: border-box;
+  }
 
-    /* હેડિંગ અને લખાણની સાઈઝ મોબાઈલ પ્રમાણે સેટ કરવા */
-    h1, h2 {
-        font-size: 24px !important;
-        text-align: center;
-    }
-    
-    p {
-        font-size: 14px !important;
-        text-align: center;
-    }
-}
-* College/Academic Section Styling */
-.academic-box {
-    background: var(--bg);
-    border: 1px solid rgba(164, 153, 217, 0.4);
-    padding: 20px;
-    border-radius: 12px;
-    margin-bottom: 40px;
-}
+  /* Grid સિસ્ટમ માટે */
+  .portfolio-grid,
+  .cards {
+    display: grid !important;
+    grid-template-columns: 1fr !important; /* એક લાઈનમાં એક જ કાર્ડ દેખાશે */
+    width: 100% !important;
+    gap: 16px;
+  }
 
-.academic-box p {
-    font-size: 14px;
-    color: var(--purple);
-    margin-bottom: 15px;
-}
-
-.academic-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-}
-
-.academic-card {
-    background: var(--card);
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-    border-top: 3px solid var(--purple2); /* તમારો બ્રાઈટ પર્પલ કલર */
-}
-
-.academic-card h5 {
-    font-size: 14px;
-    color: var(--text);
-    margin-bottom: 6px;
+  /* Navigation Bar ને મોબાઈલ માટે */
+  .nav-wrap {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 8px;
-}
+    text-align: center;
+    gap: 10px;
+  }
 
-.academic-card h5 i {
-    color: var(--purple2);
-}
+  /* Buttons Group */
+  .buttons-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
 
-.academic-card p {
-    font-size: 12px;
-    color: var(--muted);
-    margin-bottom: 0;
-    line-height: 1.5;
-}
+  /* લિંક્સ (a tags) ને 100% કરવાથી મેનુ બગડી શકે, એટલે ફક્ત બટન વાળી લિંકને જ ટાર્ગેટ કરો */
+  .portfolio-btn,
+  button,
+  .btn {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
+  }
 
-/* Responsive Grid for Phones */
-@media (max-width: 600px) {
-    .academic-grid {
-        grid-template-columns: 1fr;
-    }
-}
+  /* Images અને Videos */
+  img, video, iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
 
-your-card-class {
-    background-color: #1b263b; /* કાર્ડ માટે સહેજ લાઈટ બ્લુ */
-    color: #ff2a2a; /* કાર્ડની અંદરના અક્ષરો વ્હાઇટ કરવા માટે */
+  /* Typography (લખાણ) */
+  h1 {
+    font-size: 26px;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.6;
+    text-align: center;
+  }
 }
